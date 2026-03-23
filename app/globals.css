@@ -1,8 +1,36 @@
 @import 'tailwindcss';
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* light theme palette */
+  --light-background: #f8f8f8;
+  --light-foreground: #121212;
+
+  /* dark theme palettet */
+  --dark-background: #0a0a0a;
+  --dark-foreground: #ededed;
+}
+
+/* Theme behavior:
+   - If `.dark` class exists → use dark theme
+   - If `.light` class exists → use light theme
+   - If neither `.dark` nor `.light` is present → follow system theme
+     via prefers-color-scheme
+*/
+:root {
+  --background: var(--light-background);
+  --foreground: var(--light-foreground);
+}
+
+.dark {
+  --background: var(--dark-background);
+  --foreground: var(--dark-foreground);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not(.light) {
+    --background: var(--dark-background);
+    --foreground: var(--dark-foreground);
+  }
 }
 
 @theme inline {
@@ -12,12 +40,6 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
 
 body {
   background: var(--background);
