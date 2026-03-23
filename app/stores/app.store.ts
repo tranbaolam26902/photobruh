@@ -1,5 +1,6 @@
 import { create } from 'zustand';
-import { AppTheme } from '@/constants';
+import { AppTheme, StorageKey } from '@/constants';
+import { storage } from '@/utils';
 
 interface State {
   theme: AppTheme;
@@ -12,13 +13,16 @@ interface Actions {
 type Store = State & Actions;
 
 const initialState: State = {
-  theme: AppTheme.System,
+  theme: storage.get(StorageKey.Theme) || AppTheme.System,
 };
 
 export const useAppStore = create<Store>((set) => ({
   ...initialState,
 
-  setTheme: (theme) => set({ theme }),
+  setTheme: (theme) => {
+    storage.set(StorageKey.Theme, theme);
+    set({ theme });
+  },
 
   reset: () => set(initialState),
 }));
