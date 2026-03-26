@@ -26,13 +26,42 @@ export const ThemeSwitcher = () => {
   const t = useTranslations('ThemeSwitcher');
   const { theme, setTheme } = useTheme();
 
+  /**
+   * This state is used to prevent hydration mismatch between
+   * server-rendered HTML and client-rendered HTML.
+   *
+   * Why this is needed:
+   * - next-themes reads theme from localStorage or system preference
+   * - These values are ONLY available in the browser
+   * - On the server, the theme is unknown
+   *
+   * So the render flow without this would be:
+   *   Server render  → theme = undefined / default
+   *   Client render  → theme = "dark" (from localStorage/system)
+   *
+   * This would cause:
+   *   Hydration mismatch error
+   *
+   * To avoid this, we:
+   *   1. Render nothing on the server
+   *   2. Render nothing on the first client render
+   *   3. After the component mounts (client only), we render the switcher
+   *
+   * This ensures:
+   *   Server HTML === First client render HTML
+   *   → No hydration mismatch
+   */
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
+    // We set mounted = true only after the component mounts in the browser.
+    // This guarantees that theme from next-themes is available.
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsMounted(true);
   }, []);
 
+  // Do not render anything until mounted on client
+  // This prevents SSR/client mismatch when reading theme
   if (!isMounted) return null;
 
   return (
@@ -53,7 +82,8 @@ export const ThemeSwitcher = () => {
             variant={isSelected ? 'secondary' : 'ghost'}
             onClick={() => setTheme(appTheme.value)}
           >
-            {<appTheme.icon aria-hidden={true} />}
+            {/* Icon is decorative, so hide from screen readers */}
+            <appTheme.icon aria-hidden={true} />
           </Button>
         );
       })}
