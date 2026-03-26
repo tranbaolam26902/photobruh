@@ -1,5 +1,5 @@
-import { createNavigation } from 'next-intl/navigation';
 import { routing } from '@/i18n';
+import { createNavigation } from 'next-intl/navigation';
 
 // Lightweight wrappers around Next.js' navigation
 // APIs that consider the routing configuration

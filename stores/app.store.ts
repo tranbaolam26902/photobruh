@@ -1,6 +1,6 @@
-import { create } from 'zustand';
 import { AppTheme, StorageKey } from '@/constants';
 import { storage } from '@/utils';
+import { create } from 'zustand';
 
 interface State {
   theme: AppTheme;

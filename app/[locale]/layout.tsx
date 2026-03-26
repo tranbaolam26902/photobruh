@@ -1,9 +1,9 @@
-import type { Metadata } from 'next';
-import { Oswald } from 'next/font/google';
-import { NextIntlClientProvider } from 'next-intl';
-import { setRequestLocale } from 'next-intl/server';
 import { routing } from '@/i18n';
 import '@/styles/globals.css';
+import type { Metadata } from 'next';
+import { NextIntlClientProvider } from 'next-intl';
+import { setRequestLocale } from 'next-intl/server';
+import { Oswald } from 'next/font/google';
 
 const oswald = Oswald({
   variable: '--font-oswald',
