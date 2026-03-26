@@ -1,8 +1,10 @@
+import { AppTheme } from '@/constants';
 import { routing } from '@/i18n';
 import '@/styles/globals.css';
 import type { Metadata } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
 import { setRequestLocale } from 'next-intl/server';
+import { ThemeProvider } from 'next-themes';
 import { Oswald } from 'next/font/google';
 
 const oswald = Oswald({
@@ -32,9 +34,19 @@ export default async function RootLayout({
   setRequestLocale(locale);
 
   return (
-    <html lang='en'>
-      <body className={`${oswald.variable} antialiased`}>
-        <NextIntlClientProvider>{children}</NextIntlClientProvider>
+    <html
+      lang={locale}
+      className={`${oswald.variable} antialiased`}
+      suppressHydrationWarning
+    >
+      <body>
+        <ThemeProvider
+          attribute='class'
+          defaultTheme={AppTheme.System}
+          enableSystem
+        >
+          <NextIntlClientProvider>{children}</NextIntlClientProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
