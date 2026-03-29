@@ -1,0 +1,11 @@
+{
+  "HomePage": {
+    "title": "Trang chủ"
+  },
+  "ThemeSwitcher": {
+    "switcher": "Chọn giao diện",
+    "system": "Theo hệ thống",
+    "light": "Chế độ sáng",
+    "dark": "Chế độ tối"
+  }
+}
