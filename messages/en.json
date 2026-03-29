@@ -2,10 +2,27 @@
   "HomePage": {
     "title": "Home"
   },
+  "AppShell": {
+    "skipToMainContent": "Skip to main content"
+  },
+  "Header": {
+    "mainNavigation": "Main navigation",
+    "goToHomepage": "Go to homepage",
+    "settings": "Appearance and language settings"
+  },
+  "LocaleSwitcher": {
+    "changeLanguage": "Change language",
+    "currentLanguage": "Current language: {language}",
+    "english": "English",
+    "vietnamese": "Vietnamese"
+  },
   "ThemeSwitcher": {
     "switcher": "Theme switcher",
     "system": "System theme",
     "light": "Light theme",
     "dark": "Dark theme"
+  },
+  "Footer": {
+    "credit": "Made with ❤️ by Campbells — Photobruh"
   }
 }

@@ -1,3 +1,4 @@
+import { AppShell } from '@/components';
 import { AppTheme } from '@/constants';
 import { routing } from '@/i18n';
 import '@/styles/globals.css';
@@ -45,7 +46,9 @@ export default async function RootLayout({
           defaultTheme={AppTheme.System}
           enableSystem
         >
-          <NextIntlClientProvider>{children}</NextIntlClientProvider>
+          <NextIntlClientProvider>
+            <AppShell>{children}</AppShell>
+          </NextIntlClientProvider>
         </ThemeProvider>
       </body>
     </html>
