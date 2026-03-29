@@ -1,3 +1,5 @@
+export const APP_NAME = process.env.APP_NAME;
+
 export const AppTheme = {
   System: 'system',
   Light: 'light',

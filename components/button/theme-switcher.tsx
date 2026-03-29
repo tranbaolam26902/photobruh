@@ -61,8 +61,9 @@ export const ThemeSwitcher = () => {
   }, []);
 
   // Do not render anything until mounted on client
-  // This prevents SSR/client mismatch when reading theme
-  if (!isMounted) return null;
+  // This prevents Layout Shift and SSR/client mismatch
+  // when reading theme
+  if (!isMounted) return <div className='h-10 w-30' />;
 
   return (
     <div

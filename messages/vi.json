@@ -2,10 +2,27 @@
   "HomePage": {
     "title": "Trang chủ"
   },
+  "AppShell": {
+    "skipToMainContent": "Bỏ qua để đến nội dung chính"
+  },
+  "Header": {
+    "mainNavigation": "Điều hướng chính",
+    "goToHomepage": "Về trang chủ",
+    "settings": "Cài đặt giao diện và ngôn ngữ"
+  },
+  "LocaleSwitcher": {
+    "changeLanguage": "Đổi ngôn ngữ",
+    "currentLanguage": "Ngôn ngữ hiện tại: {language}",
+    "english": "Tiếng Anh",
+    "vietnamese": "Tiếng Việt"
+  },
   "ThemeSwitcher": {
     "switcher": "Chọn giao diện",
     "system": "Theo hệ thống",
     "light": "Chế độ sáng",
     "dark": "Chế độ tối"
+  },
+  "Footer": {
+    "credit": "Phát triển bởi Campbells — Photobruh"
   }
 }
